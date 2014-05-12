@@ -14,7 +14,7 @@ public class BrokenActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_broken);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -31,7 +31,7 @@ public class BrokenActivity extends FragmentActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_test, container, false);
+            View rootView = inflater.inflate(R.layout.activity_working, container, false);
             ViewPager pager = (ViewPager) rootView.findViewById(R.id.pager);
             pager.setOffscreenPageLimit(2);
             pager.setAdapter(new PagerAdapter(getChildFragmentManager()));
