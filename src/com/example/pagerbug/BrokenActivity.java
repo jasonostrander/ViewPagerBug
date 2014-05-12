@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainActivity extends FragmentActivity {
+public class BrokenActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +23,6 @@ public class MainActivity extends FragmentActivity {
         }
     }
     
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -42,26 +36,6 @@ public class MainActivity extends FragmentActivity {
             pager.setOffscreenPageLimit(2);
             pager.setAdapter(new PagerAdapter(getChildFragmentManager()));
             return rootView;
-        }
-        
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            getLoaderManager().enableDebugLogging(true);
-            
-            getView().post(new Runnable() {
-                
-                @Override
-                public void run() {
-                    Log.v("jason", "has running loaders = " + getLoaderManager().hasRunningLoaders());
-                }
-            });
-        }
-        
-        @Override
-        public void onStart() {
-            super.onStart();
-            Thread.dumpStack();
         }
     }
 }
